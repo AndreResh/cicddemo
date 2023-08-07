@@ -1,18 +1,9 @@
 name: hello_workflow
 on: [push]
-env:
-  # This custom environment variable is available for all the steps
-  TOPIC: Envs and secrets
 jobs:
   print-hello:
-    env:
-      # This custom environment variable is available for all the steps
-      section: Dev tools
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        env:
-          # This custom environment variable is available to only this specific step
-          platform: the platform
       - name: Hello world using echo
-        run: echo "Welcome to the ${{env.TOPIC}} topic from $section section at $platform"
+        run: cat hello.txt
