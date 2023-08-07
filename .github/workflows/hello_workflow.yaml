@@ -1,9 +1,13 @@
 name: hello_workflow
 on: [push]
+env:
+  TOPIC: Envs and secrets
 jobs:
   print-hello:
+    env:
+      section: Dev tools
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Hello world using echo
-        run: cat hello.txt
+        run: echo 'Welcome to the ${{env.TOPIC}} topic from $section section at $platform'
